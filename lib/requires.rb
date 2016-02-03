@@ -1,5 +1,7 @@
 # master require file for whole tree
 require 'faraday'
+require 'request'
+require 'response'
 
 ['../../models'].each do |dir|
   Dir[File.expand_path("#{dir}/*.rb", __FILE__)].each do |file|
