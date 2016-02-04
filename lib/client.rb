@@ -4,10 +4,9 @@ module HonestRenter
       @faraday_adapter = faraday_adapter
     end
 
-    private
-
     def connection
       @connection ||= Faraday.new do |conn|
+        conn.response :logger, ::Logger.new(STDOUT), bodies: true
         conn.adapter @faraday_adapter
       end
     end

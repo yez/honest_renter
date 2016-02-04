@@ -1,5 +1,6 @@
 # master require file for whole tree
 require 'faraday'
+require 'client'
 require 'request'
 require 'response'
 
