@@ -11,4 +11,13 @@ class Member
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def find(id)
+      client = HonestRenter::Client.new
+      request = HonestRenter::Request.new(client, id)
+      url = "/members/#{id}"
+      request.get(url)
+    end
+  end
 end
