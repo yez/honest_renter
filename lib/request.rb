@@ -6,7 +6,7 @@ module HonestRenter
     EXPIRES_LENGTH = 3600
     RENEWABLE_MULTIPLIER = 3
 
-    def initialize(client, person_id)
+    def initialize(client, person_id = nil)
       @client = client
       @person_id = person_id
     end
@@ -15,10 +15,10 @@ module HonestRenter
       json_session_hash = JSON(session_hash)
 
       {
-        'Accept' => 'application/json',
-        'Content-Type' => 'application/json',
-        'HONR-Session' => json_session_hash,
-        'HONR-Authentication-Token' => Digest::SHA256.digest(json_session_hash)
+        'Accept' => 'Application/vnd.honestrenter.v1+json',
+        'Content-Type' => 'Application/vnd.honestrenter.v1+json',
+        # 'HONR-Session' => json_session_hash,
+        # 'HONR-Authentication-Token' => Digest::SHA256.digest(json_session_hash)
       }
     end
 
