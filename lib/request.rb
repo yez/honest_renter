@@ -12,26 +12,10 @@ module HonestRenter
     end
 
     def headers
-      json_session_hash = JSON(session_hash)
-
       {
         'Accept' => 'Application/vnd.honestrenter.v1+json',
         'Content-Type' => 'Application/vnd.honestrenter.v1+json',
-        # 'HONR-Session' => json_session_hash,
-        # 'HONR-Authentication-Token' => Digest::SHA256.digest(json_session_hash)
       }
-    end
-
-    def session_hash
-      now = Time.now.to_i
-
-      {
-        apiKey: ENV['HONEST_RENTER_API_KEY'],
-        authorization: 'member',
-        expires: now + EXPIRES_LENGTH,
-        person: person_id,
-        renewableUntil: now + (EXPIRES_LENGTH * RENEWABLE_MULTIPLIER)
-       }
     end
 
     def get(url, query_params = {})
