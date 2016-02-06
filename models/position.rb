@@ -1,4 +1,4 @@
-class Position
+class Position < BaseModel
   ATTRIBUTES = [
     :id,
     :annual_income,
@@ -12,4 +12,10 @@ class Position
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'positions'
+    end
+  end
 end

@@ -1,4 +1,4 @@
-class InboxFilters
+class InboxFilters < BaseModel
   ATTRIBUTES = [
     :id,
     :account,
@@ -13,4 +13,10 @@ class InboxFilters
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'inbox_filters'
+    end
+  end
 end

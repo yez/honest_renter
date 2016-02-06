@@ -1,4 +1,4 @@
-class RelationshipType
+class RelationshipType < BaseModel
   ATTRIBUTES = [
     :id,
     :converse,
@@ -6,4 +6,10 @@ class RelationshipType
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'relationship_types'
+    end
+  end
 end

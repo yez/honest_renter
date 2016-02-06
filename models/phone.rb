@@ -1,4 +1,4 @@
-class Phone
+class Phone < BaseModel
   ATTRIBUTES = [
     :id,
     :country_code,
@@ -13,4 +13,10 @@ class Phone
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'phones'
+    end
+  end
 end

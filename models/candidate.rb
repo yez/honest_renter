@@ -1,4 +1,4 @@
-class Candidate
+class Candidate < BaseModel
   ATTRIBUTES = [
     :id,
     :administrations,
@@ -21,4 +21,10 @@ class Candidate
 
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'candidates'
+    end
+  end
 end

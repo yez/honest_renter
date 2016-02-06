@@ -1,4 +1,4 @@
-class Name
+class Name < BaseModel
   ATTRIBUTES = [
     :title,
     :first,
@@ -9,4 +9,10 @@ class Name
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'names'
+    end
+  end
 end

@@ -1,4 +1,4 @@
-class Child
+class Child < BaseModel
   ATTRIBUTES = [
     :id,
     :age,
@@ -7,4 +7,10 @@ class Child
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'child'
+    end
+  end
 end

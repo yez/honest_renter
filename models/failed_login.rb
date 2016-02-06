@@ -1,4 +1,4 @@
-class FailedLogin
+class FailedLogin < BaseModel
   ATTRIBUTES = [
     :id,
     :binary_ip,
@@ -8,4 +8,10 @@ class FailedLogin
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'failed_logins'
+    end
+  end
 end

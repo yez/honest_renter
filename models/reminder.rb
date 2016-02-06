@@ -1,4 +1,4 @@
-class Reminder
+class Reminder < BaseModel
   ATTRIBUTES = [
     :id,
     :applicant,
@@ -8,4 +8,10 @@ class Reminder
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'reminders'
+    end
+  end
 end

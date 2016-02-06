@@ -1,4 +1,4 @@
-class Email
+class Email < BaseModel
   ATTRIBUTES = [
     :id,
     :address,
@@ -10,4 +10,10 @@ class Email
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'emails'
+    end
+  end
 end

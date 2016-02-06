@@ -1,4 +1,4 @@
-class Reference
+class Reference < BaseModel
   ATTRIBUTES = [
     :id,
     :created,
@@ -9,4 +9,10 @@ class Reference
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'references'
+    end
+  end
 end

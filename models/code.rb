@@ -1,4 +1,4 @@
-class Code
+class Code < BaseModel
   ATTRIBUTES = [
     :id,
     :account,
@@ -16,4 +16,10 @@ class Code
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'codes'
+    end
+  end
 end

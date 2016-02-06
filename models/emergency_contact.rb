@@ -1,4 +1,4 @@
-class EmergencyContact
+class EmergencyContact < BaseModel
   ATTRIBUTES = [
     :id,
     :candidate,
@@ -7,4 +7,10 @@ class EmergencyContact
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'emergency_contacts'
+    end
+  end
 end

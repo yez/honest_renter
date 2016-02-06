@@ -1,4 +1,4 @@
-class Person
+class Person < BaseModel
   ATTRIBUTES = [
     :id,
     :accounts_with_access,
@@ -19,4 +19,10 @@ class Person
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'persons'
+    end
+  end
 end

@@ -1,4 +1,4 @@
-class Residence
+class Residence < BaseModel
   ATTRIBUTES = [
     :id,
     :address,
@@ -14,4 +14,10 @@ class Residence
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'residences'
+    end
+  end
 end

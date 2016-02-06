@@ -1,8 +1,14 @@
-class ReasonForExclusion
+class ReasonForExclusion < BaseModel
   ATTRIBUTES = [
     :id,
     :label
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'reasons_for_exclusion'
+    end
+  end
 end

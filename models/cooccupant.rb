@@ -1,4 +1,4 @@
-class Cooccupant
+class Cooccupant < BaseModel
   ATTRIBUTES = [
     :id,
     :applicant,
@@ -9,4 +9,10 @@ class Cooccupant
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'cooccupants'
+    end
+  end
 end

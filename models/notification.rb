@@ -1,4 +1,4 @@
-class Notification
+class Notification < BaseModel
   ATTRIBUTES = [
     :id,
     :person,
@@ -7,4 +7,10 @@ class Notification
   ].freeze
 
   attr_accessor *ATTRIBUTES
+
+  class << self
+    def attr_name
+      'notifications'
+    end
+  end
 end
