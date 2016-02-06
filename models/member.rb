@@ -1,4 +1,4 @@
-class Member
+class Member < BaseModel
   ATTRIBUTES = [
     :id,
     :has_password,
@@ -13,11 +13,8 @@ class Member
   attr_accessor *ATTRIBUTES
 
   class << self
-    def find(id)
-      client = HonestRenter::Client.new
-      request = HonestRenter::Request.new(client, id)
-      url = "/members/#{id}"
-      request.get(url)
+    def attr_name
+      'members'
     end
   end
 end

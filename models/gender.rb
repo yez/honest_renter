@@ -1,4 +1,4 @@
-class Gender
+class Gender < BaseModel
   ATTRIBUTES = [
     :id,
     :label
@@ -7,12 +7,8 @@ class Gender
   attr_accessor *ATTRIBUTES
 
   class << self
-    def find_all
-      HonestRenter::FindAll.new('genders').call
-    end
-
-    def find(id)
-      HonestRenter::FindById.new(id, 'genders').call
+    def attr_name
+      'genders'
     end
   end
 end
