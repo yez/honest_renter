@@ -1,18 +1,19 @@
-class Response
-  HAPPY_STATUSES = [200, 300]
+module HonestRenter
+  class Response
+    attr_reader :raw_response
 
-  def initialize(raw_response)
-  end
+    HAPPY_STATUSES = [200, 300].freeze
 
-  def parse
+    def initialize(raw_response)
+      @raw_response = raw_response
+    end
 
-  end
+    def status
+      raw_response['status'].to_i
+    end
 
-  def status
-
-  end
-
-  def success?
-    HAPPY_STATUSES.include?(status.floor)
+    def success?
+      HAPPY_STATUSES.include?(status.floor)
+    end
   end
 end
