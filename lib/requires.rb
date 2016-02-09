@@ -3,6 +3,8 @@ require 'faraday'
 require 'client'
 require 'request'
 require 'response'
+require 'session'
+require 'authenticator'
 
 ['../../models', '../requests'].each do |dir|
   Dir[File.expand_path("#{dir}/*.rb", __FILE__)].each do |file|

@@ -1,21 +1,31 @@
 module HonestRenter
   class Request
-    attr_reader :client, :person_id
+    attr_reader :client, :session
 
     BASE_URL = 'https://honestrenter.com/api/'.freeze
     EXPIRES_LENGTH = 3600
     RENEWABLE_MULTIPLIER = 3
 
-    def initialize(client, person_id = nil)
+    def initialize(client, session)
       @client = client
-      @person_id = person_id
+      @session = session
     end
 
     def headers
       {
         'Accept' => 'Application/vnd.honestrenter.v1+json',
         'Content-Type' => 'Application/vnd.honestrenter.v1+json',
+        'HONR-Session' => honr_session,
+        'HONR-Authentication-Token' => honr_authentication_token
       }
+    end
+
+    def honr_session
+      session.honr_session
+    end
+
+    def honr_authentication_token
+      session.honr_authentication_token
     end
 
     def get(url, query_params = {})
