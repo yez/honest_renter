@@ -6,7 +6,7 @@ module HonestRenter
     EXPIRES_LENGTH = 3600
     RENEWABLE_MULTIPLIER = 3
 
-    def initialize(client, session)
+    def initialize(client, session = nil)
       @client = client
       @session = session
     end
@@ -14,9 +14,9 @@ module HonestRenter
     def headers
       {
         'Accept' => 'Application/vnd.honestrenter.v1+json',
-        'Content-Type' => 'Application/vnd.honestrenter.v1+json',
-        'HONR-Session' => honr_session,
-        'HONR-Authentication-Token' => honr_authentication_token
+        # 'Content-Type' => 'Application/vnd.honestrenter.v1+json',
+        # 'HONR-Session' => honr_session,
+        # 'HONR-Authentication-Token' => honr_authentication_token
       }
     end
 
@@ -29,21 +29,26 @@ module HonestRenter
     end
 
     def get(url, query_params = {})
-      raw_response = client.connection.get(BASE_URL + url) do |request|
+      client.connection.get("#{BASE_URL}#{url}?apiKey=#{api_key}") do |request|
         request.headers = headers
       end
-
-      raise response.error unless response.success?
-      response
     end
 
     def post(url, body, query_params = {})
-      response = respond(client.connection.post(url, body))
-      raise response.error unless response.success?
-      response
+      client.connection.post("#{BASE_URL}#{url}", post_body(body.merge(apiKey: api_key))) do |request|
+        request.headers = headers
+      end
     end
 
     private
+
+    def post_body(hash)
+      hash.map { |k, v| "#{k}=#{v}" }.join('&')
+    end
+
+    def api_key
+      ENV['HONEST_RENTER_API_KEY']
+    end
 
     def respond(raw_response)
       Response.new(raw_response)
