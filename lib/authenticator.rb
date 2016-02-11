@@ -5,13 +5,17 @@ module HonestRenter
         SecretKeyAuthenticator.new(secret_key)
       end
 
-      def from_username_password(username, password)
-        UsernamePasswordAuthenticator.new(username, password)
+      def from_address_and_password(address, password)
+        AddressPasswordAuthenticator.new(address, password)
       end
     end
 
     def initialize(*args)
       after_initialize(*args)
+    end
+
+    def session
+      build_session
     end
   end
 
@@ -19,12 +23,20 @@ module HonestRenter
     def after_initialize(secret_key)
       @secret_key = secret_key
     end
+
+    def build_session
+
+    end
   end
 
-  class UsernamePasswordAuthenticator < Authenticator
-    def after_initialize(username, password)
-      @username = username
+  class AddressPasswordAuthenticator < Authenticator
+    def after_initialize(address, password)
+      @address = address
       @password = password
+    end
+
+    def build_session
+      raw_session = HonestRenter::Post.new('members/session', address: address, password: password).call
     end
   end
 end
