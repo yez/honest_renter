@@ -36,7 +36,11 @@ module HonestRenter
     end
 
     def build_session
-      raw_session = HonestRenter::Post.new('members/session', address: address, password: password).call
+      raw_session = HonestRenter::Post.new('members/session', address: @address, password: @password).call
+      HonestRenter::Session.new(
+        raw_session.headers['honr-authentication-token'],
+        raw_session.headers['honr-session']
+      )
     end
   end
 end
