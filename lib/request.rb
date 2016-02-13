@@ -13,19 +13,13 @@ module HonestRenter
 
     def headers
       {
-        'Accept' => 'Application/vnd.honestrenter.v1+json',
-        # 'Content-Type' => 'Application/vnd.honestrenter.v1+json',
-        # 'HONR-Session' => honr_session,
-        # 'HONR-Authentication-Token' => honr_authentication_token
-      }
-    end
-
-    def honr_session
-      session.honr_session
-    end
-
-    def honr_authentication_token
-      session.honr_authentication_token
+        'Accept' => 'Application/vnd.honestrenter.v1+json'
+      }.tap do |_headers|
+        unless @session.nil?
+          _headers['HONR-Session'] = @session.honr_session
+          _headers['HONR-Authentication-Token'] = @session.honr_authentication_token
+        end
+      end
     end
 
     def get(url, query_params = {})

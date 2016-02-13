@@ -1,9 +1,9 @@
 module HonestRenter
   class Session
-    attr_reader :honr_authentiation_token, :honr_session
+    attr_reader :honr_authentication_token, :honr_session
 
-    def initialize(honr_authentiation_token, honr_session)
-      @honr_authentiation_token = honr_authentiation_token
+    def initialize(honr_authentication_token, honr_session)
+      @honr_authentication_token = honr_authentication_token
       @honr_session = honr_session
     end
   end
