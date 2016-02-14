@@ -23,18 +23,30 @@ module HonestRenter
     end
 
     def get(url, query_params = {})
-      client.connection.get("#{BASE_URL}#{url}?apiKey=#{api_key}") do |request|
+      raw_response = client.connection.get("#{BASE_URL}#{url}?apiKey=#{api_key}") do |request|
         request.headers = headers
       end
+
+      respond(raw_response)
     end
 
     def post(url, body, query_params = {})
-      client.connection.post("#{BASE_URL}#{url}", post_body(body.merge(apiKey: api_key))) do |request|
+      raw_response = client.connection.post("#{BASE_URL}#{url}", post_body(body.merge(apiKey: api_key))) do |request|
         request.headers = headers
       end
+
+      respond(raw_response)
     end
 
     private
+
+    def respond(raw_response)
+      response = Response.new(raw_response)
+
+      raise response.error unless response.success?
+
+      response
+    end
 
     def post_body(hash)
       hash.map { |k, v| "#{k}=#{v}" }.join('&')
@@ -42,10 +54,6 @@ module HonestRenter
 
     def api_key
       ENV['HONEST_RENTER_API_KEY']
-    end
-
-    def respond(raw_response)
-      Response.new(raw_response)
     end
   end
 end

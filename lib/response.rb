@@ -1,19 +1,30 @@
 module HonestRenter
   class Response
-    attr_reader :raw_response
+    class MalformedResponse < StandardError; end
+    class RequestError < StandardError; end
+
+    attr_reader :body, :headers, :error
 
     HAPPY_STATUSES = [200, 300].freeze
 
     def initialize(raw_response)
-      @raw_response = raw_response
-    end
+      @status = raw_response.status
+      @headers = raw_response.headers
 
-    def status
-      raw_response['status'].to_i
+      begin
+        @body = JSON.parse(raw_response.body)
+      rescue JSON::ParserError => e
+        raise MalformedResponse,
+                "Honest Renter response body not valid JSON, #{ raw_response.body } given"
+      end
+
+      if @body.key?('error')
+        @error = RequestError.new(@body['error']['message'])
+      end
     end
 
     def success?
-      HAPPY_STATUSES.include?(status.floor)
+      HAPPY_STATUSES.include?(@status.floor)
     end
   end
 end
