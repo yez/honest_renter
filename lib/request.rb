@@ -31,7 +31,9 @@ module HonestRenter
     end
 
     def post(url, body, query_params = {})
-      raw_response = client.connection.post("#{BASE_URL}#{url}", post_body(body.merge(apiKey: api_key))) do |request|
+      _body = post_body(body.merge(apiKey: api_key))
+
+      raw_response = client.connection.post("#{BASE_URL}#{url}", _body) do |request|
         request.headers = headers
       end
 
