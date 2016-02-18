@@ -32,7 +32,7 @@ module HonestRenter
     def build_session
       json_hash = JSON(raw_hash)
       digest = OpenSSL::Digest.new('sha256')
-      encoded = OpenSSL::HMAC.hexdigest(digest, json_hash, @secret_key)
+      encoded = OpenSSL::HMAC.hexdigest(digest, @secret_key, json_hash)
 
       HonestRenter::Session.new(encoded, json_hash)
     end
