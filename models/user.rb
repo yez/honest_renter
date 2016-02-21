@@ -1,18 +1,20 @@
-class User < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :account,
-    :created,
-    :removed,
-    :member,
-    :role
-  ].freeze
+module HonestRenter
+  class User < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :account,
+      :created,
+      :removed,
+      :member,
+      :role
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'users'
+    class << self
+      def attr_name
+        'users'
+      end
     end
   end
 end

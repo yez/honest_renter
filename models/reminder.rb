@@ -1,17 +1,19 @@
-class Reminder < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :applicant,
-    :created,
-    :destination,
-    :sender
-  ].freeze
+module HonestRenter
+  class Reminder < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :applicant,
+      :created,
+      :destination,
+      :sender
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'reminders'
+    class << self
+      def attr_name
+        'reminders'
+      end
     end
   end
 end

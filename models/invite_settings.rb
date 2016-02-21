@@ -1,19 +1,21 @@
-class InviteSettings < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :account,
-    :assessment,
-    :location,
-    :message,
-    :method,
-    :unit
-  ].freeze
+module HonestRenter
+  class InviteSettings < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :account,
+      :assessment,
+      :location,
+      :message,
+      :method,
+      :unit
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'invite_settings'
+    class << self
+      def attr_name
+        'invite_settings'
+      end
     end
   end
 end

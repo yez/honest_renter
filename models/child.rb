@@ -1,16 +1,18 @@
-class Child < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :age,
-    :applicant,
-    :created
-  ].freeze
+module HonestRenter
+  class Child < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :age,
+      :applicant,
+      :created
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'child'
+    class << self
+      def attr_name
+        'child'
+      end
     end
   end
 end

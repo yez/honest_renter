@@ -1,16 +1,18 @@
-class EmergencyContact < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :candidate,
-    :contact,
-    :relationship
-  ].freeze
+module HonestRenter
+  class EmergencyContact < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :candidate,
+      :contact,
+      :relationship
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'emergency_contacts'
+    class << self
+      def attr_name
+        'emergency_contacts'
+      end
     end
   end
 end

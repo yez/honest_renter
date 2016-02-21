@@ -1,15 +1,17 @@
-class NotificationType < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :label,
-    :active
-  ].freeze
+module HonestRenter
+  class NotificationType < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :label,
+      :active
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'notification_types'
+    class << self
+      def attr_name
+        'notification_types'
+      end
     end
   end
 end

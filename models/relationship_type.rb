@@ -1,15 +1,17 @@
-class RelationshipType < BaseModel
-  ATTRIBUTES = [
-    :id,
-    :converse,
-    :label
-  ].freeze
+module HonestRenter
+  class RelationshipType < BaseModel
+    ATTRIBUTES = [
+      :id,
+      :converse,
+      :label
+    ].freeze
 
-  attr_accessor *ATTRIBUTES
+    attr_accessor *ATTRIBUTES
 
-  class << self
-    def attr_name
-      'relationship_types'
+    class << self
+      def attr_name
+        'relationship_types'
+      end
     end
   end
 end
