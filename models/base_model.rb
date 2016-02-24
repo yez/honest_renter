@@ -9,6 +9,16 @@ module HonestRenter
       end
     end
 
+    def to_h
+      {}.tap do |hash|
+        instance_variables.each do |variable|
+          name = variable.to_s[1..-1]
+          value = instance_variable_get(variable)
+          hash[name] = value
+        end
+      end
+    end
+
     private
 
     class << self

@@ -1,5 +1,7 @@
+require_relative 'person'
+
 module HonestRenter
-  class Member < BaseModel
+  class Member < Person
     ATTRIBUTES = [
       :id,
       :has_password,
