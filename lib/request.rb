@@ -1,5 +1,7 @@
 module HonestRenter
   class Request
+    class ExpiredSession < StandardError; end
+
     attr_reader :client, :session
 
     BASE_URL = 'https://honestrenter.com/api/'.freeze
@@ -9,6 +11,8 @@ module HonestRenter
     def initialize(client, session = nil)
       @client = client
       @session = session
+
+      raise ExpiredSession, "session expired at: #{ session.expires_at }, please re-authenticate."
     end
 
     def headers
