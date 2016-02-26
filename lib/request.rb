@@ -12,7 +12,9 @@ module HonestRenter
       @client = client
       @session = session
 
-      raise ExpiredSession, "session expired at: #{ session.expires_at }, please re-authenticate."
+      if session.expired?
+        raise ExpiredSession, "session expired at: #{ session.expires_at }, please re-authenticate."
+      end
     end
 
     def headers
@@ -20,15 +22,19 @@ module HonestRenter
         'Accept' => 'Application/vnd.honestrenter.v1+json'
       }.tap do |_headers|
         unless @session.nil?
-          _headers['HONR-Session'] = @session.honr_session
+          _headers['HONR-Session'] = JSON(@session.honr_session)
           _headers['HONR-Authentication-Token'] = @session.honr_authentication_token
         end
       end
     end
 
     def get(url, query_params = {})
-      raw_response = client.connection.get("#{BASE_URL}#{url}?apiKey=#{api_key}") do |request|
+      raw_response = client.connection.get("#{BASE_URL}#{url}") do |request|
         request.headers = headers
+        request.params['apiKey'] = api_key
+        query_params.each_pair do |key, value|
+          request.params[key] = value
+        end
       end
 
       respond(raw_response)
