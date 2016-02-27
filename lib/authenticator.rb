@@ -15,7 +15,12 @@ module HonestRenter
     end
 
     def session
-      build_session
+      @session ||= build_session
+    end
+
+    def renew!
+      @session = nil
+      session
     end
   end
 

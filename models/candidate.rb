@@ -20,7 +20,6 @@ module HonestRenter
       :vehicles
     ].freeze
 
-
     attr_accessor *ATTRIBUTES
 
     class << self
