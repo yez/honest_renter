@@ -19,8 +19,6 @@ module HonestRenter
       end
     end
 
-    private
-
     class << self
       def find_all(session)
         HonestRenter::FindAll.new(attr_name).call
