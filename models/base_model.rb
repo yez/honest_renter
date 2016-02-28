@@ -21,11 +21,16 @@ module HonestRenter
 
     class << self
       def find_all(session)
-        HonestRenter::FindAll.new(attr_name).call
+        response = HonestRenter::FindAll.new(attr_name).call
+        raise response.error unless response.sucess?
+        response.body['data'].map do |data|
+          new(data)
+        end
       end
 
       def find(id, session)
         response = HonestRenter::FindById.new(id, attr_name, session).call
+        raise response.error unless response.sucess?
         new(response.body["data"])
       end
     end
