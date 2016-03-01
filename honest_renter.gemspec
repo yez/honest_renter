@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler', '~> 1.3'
   s.add_development_dependency 'rake', '~>10'
+  s.add_development_dependency 'minitest', '4.3.2'
 end

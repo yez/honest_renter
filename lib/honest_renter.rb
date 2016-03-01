@@ -6,6 +6,7 @@ module HonestRenter
   module_function :snake_case
 end
 
-require 'requires'
+require 'faraday'
 require 'logger'
 require 'json'
+require_relative './requires'

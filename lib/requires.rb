@@ -1,11 +1,10 @@
 # master require file for whole tree
-require 'faraday'
-require 'client'
-require 'request'
-require 'response'
-require 'session'
-require 'authenticator'
-require './models/base_model'
+require_relative 'client'
+require_relative 'request'
+require_relative 'response'
+require_relative 'session'
+require_relative 'authenticator'
+require_relative '../models/base_model'
 
 ['../../models', '../requests'].each do |dir|
   Dir[File.expand_path("#{dir}/*.rb", __FILE__)].each do |file|

@@ -13,7 +13,7 @@ module HonestRenter
 
       begin
         @body = JSON.parse(raw_response.body)
-      rescue JSON::ParserError => e
+      rescue JSON::ParserError, TypeError => e
         raise MalformedResponse,
                 "Honest Renter response body not valid JSON, #{ raw_response.body } given"
       end
