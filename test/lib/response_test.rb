@@ -1,5 +1,4 @@
 require_relative '../test_helper'
-require 'minitest/autorun'
 require_relative '../../lib/response'
 
 module HonestRenter

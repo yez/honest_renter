@@ -4,7 +4,7 @@ module HonestRenter
 
     def initialize(honr_authentication_token, honr_session)
       @honr_authentication_token = honr_authentication_token.to_s
-      @honr_session = JSON.parse(honr_session)
+      @honr_session = JSON.parse(honr_session) rescue nil
     end
 
     def expires_at
