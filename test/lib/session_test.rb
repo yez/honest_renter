@@ -26,5 +26,20 @@ module HonestRenter
 
       assert_equal(true, session.expired?)
     end
+
+    def test_expired_session_is_expired
+      session = Session.new('',
+                            JSON({ expires: Time.now.to_i - 180 }))
+
+      assert_equal(true, session.expired?)
+    end
+
+    def test_expired_at
+      expires_time = Time.now + 180
+      session = Session.new('',
+                            JSON({ expires: expires_time.to_i }))
+
+      assert_equal(expires_time.to_s, session.expires_at.to_s)
+    end
   end
 end
