@@ -7,6 +7,7 @@ module HonestRenter
       secret_key = 'secret_key'
       member_id = 1234
       authenticator = Authenticator.from_secret_key_member_id(secret_key, member_id)
+
       assert_equal(authenticator.class, SecretKeyMemberIdAuthenticator)
       assert_equal(authenticator.instance_variable_get(:@secret_key), secret_key)
       assert_equal(authenticator.instance_variable_get(:@member_id), member_id)
@@ -16,9 +17,34 @@ module HonestRenter
       address = 'address'
       password = 'a password'
       authenticator = Authenticator.from_address_and_password(address, password)
+
       assert_equal(authenticator.class, AddressPasswordAuthenticator)
       assert_equal(authenticator.instance_variable_get(:@address), address)
       assert_equal(authenticator.instance_variable_get(:@password), password)
+    end
+
+    def test_secret_key_build_session
+      secret_key = 'secret_key'
+      member_id = 1234
+      authenticator = Authenticator.from_secret_key_member_id(secret_key, member_id)
+
+      assert_equal(authenticator.session.class, HonestRenter::Session)
+    end
+
+    def test_secret_key_raw_hash_keys
+      secret_key = 'secret_key'
+      member_id = 1234
+      authenticator = Authenticator.from_secret_key_member_id(secret_key, member_id)
+      hash = authenticator.raw_hash
+      expected_keys = [
+        :apiKey,
+        :authorization,
+        :expires,
+        :person,
+        :renewableUntil
+      ]
+
+      assert_equal(authenticator.raw_hash.keys, expected_keys)
     end
   end
 end
