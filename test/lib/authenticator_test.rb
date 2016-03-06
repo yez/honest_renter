@@ -31,6 +31,17 @@ module HonestRenter
       assert_equal(authenticator.session.class, HonestRenter::Session)
     end
 
+    def test_address_and_password_session
+      address = 'address'
+      password = 'a password'
+      authenticator = Authenticator.from_address_and_password(address, password)
+      allow(HonestRenter::Post).to receive_message_chain(:new, :call) do
+        instance_double(HonestRenter::Response, headers: {})
+      end
+
+      assert_equal(authenticator.session.class, HonestRenter::Session)
+    end
+
     def test_secret_key_raw_hash_keys
       secret_key = 'secret_key'
       member_id = 1234
