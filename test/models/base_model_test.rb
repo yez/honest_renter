@@ -7,16 +7,23 @@ module HonestRenter
   end
 
   class BaseModelTest < MiniTest::Unit::TestCase
-    def test_initialize_sets_proper_attributes
-      foo = :foo
-      bar_baz = :bar_baz
-      qux = :qux
-      data_hash = { foo: foo, barBaz: bar_baz, qux: qux }
-      test_model = TestModel.new(data_hash)
+    def setup
+      @foo = :foo
+      @bar_baz = :bar_baz
+      @qux = :qux
+      data_hash = { foo: @foo, barBaz: @bar_baz, qux: @qux }
+      @test_model = TestModel.new(data_hash)
+    end
 
-      assert_equal(test_model.foo, foo)
-      assert_equal(test_model.bar_baz, bar_baz)
-      assert_equal(test_model.qux, qux)
+    def test_initialize_sets_proper_attributes
+      assert_equal(@test_model.foo, @foo)
+      assert_equal(@test_model.bar_baz, @bar_baz)
+      assert_equal(@test_model.qux, @qux)
+    end
+
+    def test_to_h
+      expected_hash = { 'foo' => @foo, 'bar_baz' => @bar_baz, 'qux' => @qux }
+      assert_equal(@test_model.to_h, expected_hash)
     end
   end
 end
