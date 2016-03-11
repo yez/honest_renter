@@ -22,7 +22,7 @@ module HonestRenter
     class << self
       def find_all(session)
         response = HonestRenter::FindAll.new(attr_name).call
-        raise response.error unless response.sucess?
+        raise response.error unless response.success?
         response.body['data'].map do |data|
           new(data)
         end
@@ -30,7 +30,7 @@ module HonestRenter
 
       def find(id, session)
         response = HonestRenter::FindById.new(id, attr_name, session).call
-        raise response.error unless response.sucess?
+        raise response.error unless response.success?
         new(response.body["data"])
       end
     end
