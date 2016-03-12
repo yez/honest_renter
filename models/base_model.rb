@@ -35,4 +35,6 @@ module HonestRenter
       end
     end
   end
+
+  private_constant :BaseModel
 end
