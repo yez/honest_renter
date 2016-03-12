@@ -5,10 +5,21 @@ module HonestRenter
       @session = session
     end
 
+    def expanding(attribute)
+      @expansions ||= []
+      @expansions << attribute
+
+      self
+    end
+
     def call
       client = HonestRenter::Client.new
       request = HonestRenter::Request.new(client, session)
-      request.get(@resource_name)
+      query = {}.tap do |params|
+        params[:expand] = JSON(@expansions) unless @expansions.empty?
+      end
+
+      request.get(@resource_name, query)
     end
   end
 end
