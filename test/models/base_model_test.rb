@@ -41,5 +41,11 @@ module HonestRenter
 
       TestModel.find_all(session)
     end
+
+    def test_visibility
+      assert_raises(NameError) do
+        ::HonestRenter::BaseModel.new
+      end
+    end
   end
 end
