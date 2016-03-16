@@ -57,5 +57,19 @@ module HonestRenter
 
       assert_equal(authenticator.raw_hash.keys, expected_keys)
     end
+
+    def test_renew!
+      allow(HonestRenter::Post).to receive_message_chain(:new, :call) do
+        instance_double(HonestRenter::Response, headers: {})
+      end
+
+      address = 'address'
+      password = 'a password'
+      authenticator = Authenticator.from_address_and_password(address, password)
+
+      assert_equal(authenticator.instance_variable_get(:@session).nil?, true)
+      authenticator.renew!
+      assert_equal(authenticator.instance_variable_get(:@session).nil?, false)
+    end
   end
 end
