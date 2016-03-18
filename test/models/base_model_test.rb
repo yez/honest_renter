@@ -36,7 +36,7 @@ module HonestRenter
       find_request = instance_double(HonestRenter::FindAll)
       response = instance_double(HonestRenter::Response, body: { 'data' => {} }, success?: true)
       session = instance_double(HonestRenter::Session, honr_session: '', honr_authentication_token: '')
-      expect(HonestRenter::FindAll).to receive(:new).with(TestModel.attr_name) { find_request }
+      expect(HonestRenter::FindAll).to receive(:new).with(TestModel.attr_name, session) { find_request }
       expect(find_request).to receive(:call) { response }
 
       TestModel.find_all(session)
