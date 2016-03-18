@@ -21,7 +21,7 @@ module HonestRenter
 
     class << self
       def find_all(session)
-        response = HonestRenter::FindAll.new(attr_name).call
+        response = HonestRenter::FindAll.new(attr_name, session).call
         raise response.error unless response.success?
         response.body['data'].map do |data|
           new(data)
