@@ -19,7 +19,7 @@ module HonestRenter
       url = "#{ @resource_name }/#{ @id }"
 
       query = {}.tap do |params|
-        params[:expand] = JSON(@expansions) unless @expansions.empty?
+        params[:expand] = JSON(@expansions) unless Array(@expansions).empty?
       end
 
       request.get(url, query)
