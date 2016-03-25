@@ -1,8 +1,10 @@
 module HonestRenter
   class FindAll
-    def initialize(resource_name, session)
+    def initialize(resource_name, session, limit = nil, offset = nil)
       @resource_name = resource_name
       @session = session
+      @limit = limit
+      @offset = offset
     end
 
     def expanding(attribute)
@@ -19,6 +21,9 @@ module HonestRenter
         unless @expansions.nil? || @expansions.empty?
           params[:expand] = JSON(@expansions)
         end
+
+        params[:limit] = @limit unless @limit.nil?
+        params[:offset] = @offset unless @offset.nil?
       end
 
       request.get(@resource_name, query)

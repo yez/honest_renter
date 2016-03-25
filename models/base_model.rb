@@ -20,8 +20,9 @@ module HonestRenter
     end
 
     class << self
-      def find_all(session)
-        response = HonestRenter::FindAll.new(attr_name, session).call
+      def find_all(session, limit=nil, offset=nil)
+        args = [session, limit, offset].compact
+        response = HonestRenter::FindAll.new(attr_name, *args).call
         raise response.error unless response.success?
         response.body['data'].map do |data|
           new(data)
