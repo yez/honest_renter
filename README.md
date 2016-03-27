@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/yez/honest_renter.svg?branch=master)](https://travis-ci.org/yez/honest_renter)
 
-[Docs](https://www.honestrenter.com/api/docs)
-
 ## Basic Objects
 
 All supported objects have their own class. Each of these classes inherits from the `BaseModel` class.
@@ -92,3 +90,7 @@ limit = 10
 offset = 5
 HonestRenter::Country.find_all(session, limit, offset)
 ```
+
+## More Information
+
+For more information, refer to the [Official Honest Renter API Docs](https://www.honestrenter.com/api/docs)
