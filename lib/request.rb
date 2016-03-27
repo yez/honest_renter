@@ -19,8 +19,7 @@ module HonestRenter
 
     def headers
       {
-        'Accept' => 'Application/vnd.honestrenter.v1+json',
-        'Content-Type' => 'application/json'
+        'Accept' => 'Application/vnd.honestrenter.v1+json'
       }.tap do |_headers|
         unless @session.nil?
           _headers['HONR-Session'] = JSON(@session.honr_session)
