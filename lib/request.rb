@@ -12,7 +12,7 @@ module HonestRenter
       @client = client
       @session = session
 
-      if session.expired?
+      if !@session.nil? && session.expired?
         raise ExpiredSession, "session expired at: #{ session.expires_at }, please re-authenticate."
       end
     end

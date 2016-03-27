@@ -1,6 +1,6 @@
 module HonestRenter
   class Post
-    def initialize(resource_name, body, session)
+    def initialize(resource_name, body, session=nil)
       @resource_name = resource_name
       @body = body
       @session = session
