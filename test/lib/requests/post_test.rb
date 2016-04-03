@@ -4,6 +4,7 @@ require_relative '../../../lib/requests/post'
 module HonestRenter
   class PostTest < Minitest::Unit::TestCase
     def setup
+      super
       @resource_name = 'some resource'
       @session = instance_double(Session)
       @body = {}

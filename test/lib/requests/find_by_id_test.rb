@@ -4,6 +4,7 @@ require_relative '../../../lib/requests/find_by_id'
 module HonestRenter
   class FindByIdTest < Minitest::Unit::TestCase
     def setup
+      super
       @id = 1234
       @resource_name = 'some resource'
       @session = instance_double(Session)

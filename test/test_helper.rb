@@ -1,6 +1,15 @@
 require_relative '../lib/honest_renter'
 require 'minitest/autorun'
 require 'rspec/mocks'
+require 'webmock/minitest'
+
+WebMock.disable_net_connect!
+
+class MiniTest::Unit::TestCase
+  def setup
+    # TODO: add HTTP mocks for data
+  end
+end
 
 module MinitestRSpecMocksIntegration
   include ::RSpec::Mocks::ExampleMethods
