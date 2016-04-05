@@ -1,0 +1,31 @@
+{
+  "data": {
+    "id": "TYJH7ptuju",
+    "hasPassword": 1,
+    "inboxFilters": "TYJH7ptuju",
+    "inviteSettings": "TYJH7ptuju",
+    "sendReportsByEmail": true,
+    "users": [
+      "1LXpyPFjYJ"
+    ],
+    "accountsWithAccess": [
+      "qupHjmQzUb"
+    ],
+    "birthdate": null,
+    "created": 1454552715,
+    "dateToDeleteIdentifyingInfo": null,
+    "ethnicities": [],
+    "emails": [
+      "ZGU3CSVfwn"
+    ],
+    "gender": null,
+    "name": "TYJH7ptuju",
+    "notes": [],
+    "notifications": [],
+    "otherEthnicity": "",
+    "phones": [],
+    "positions": null,
+    "preferredEmail": null,
+    "preferredPhone": null
+  }
+}
