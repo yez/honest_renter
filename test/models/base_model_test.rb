@@ -14,7 +14,6 @@ module HonestRenter
 
   class BaseModelTest < MiniTest::Unit::TestCase
     def setup
-      super
       @foo = :foo
       @bar_baz = :bar_baz
       @qux = :qux

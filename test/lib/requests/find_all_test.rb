@@ -4,7 +4,6 @@ require_relative '../../../lib/requests/find_all'
 module HonestRenter
   class FindAllTest < Minitest::Unit::TestCase
     def setup
-      super
       @resource_name = 'some resource'
       @session = instance_double(Session)
       @request = FindAll.new(@resource_name, @session)
