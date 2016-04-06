@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "label": "White"
+    },
+    {
+      "id": 2,
+      "label": "Black"
+    },
+    {
+      "id": 3,
+      "label": "Hispanic, Lantino, or Spanish origin"
+    },
+    {
+      "id": 4,
+      "label": "Asian"
+    },
+    {
+      "id": 5,
+      "label": "Aboriginal"
+    },
+    {
+      "id": 6,
+      "label": "Arab"
+    },
+    {
+      "id": 7,
+      "label": "Pacific Islander"
+    },
+    {
+      "id": 8,
+      "label": "Other"
+    }
+  ],
+  "limit": 100,
+  "offset": 0
+}

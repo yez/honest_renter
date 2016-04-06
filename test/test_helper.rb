@@ -18,6 +18,15 @@ class WebMockingTest < MiniTest::Unit::TestCase
         status: 200,
         body: File.read("#{ FIXTURES_DIR }/members/find.json"),
         headers: {})
+
+    WebMock.stub_request(
+      :get,
+      "https://honestrenter.com/api/ethnicities?apiKey")
+      .with(headers: headers)
+      .to_return(
+        status: 200,
+        body: File.read("#{ FIXTURES_DIR }/ethnicities/find_all.json"),
+        headers: {})
   end
 
   def test_session
