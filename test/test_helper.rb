@@ -7,7 +7,8 @@ WebMock.disable_net_connect!
 
 class WebMockingTest < MiniTest::Unit::TestCase
   TEST_MEMBER_ID = 'TYJH7ptuju'.freeze
-  FIXTURES_DIR = "#{ File.dirname(__FILE__) }/fixtures/"
+  TEST_TITLES_ID = 3
+  FIXTURES_DIR = "#{ File.dirname(__FILE__) }/fixtures"
 
   def setup
     WebMock.stub_request(
@@ -26,6 +27,15 @@ class WebMockingTest < MiniTest::Unit::TestCase
       .to_return(
         status: 200,
         body: File.read("#{ FIXTURES_DIR }/ethnicities/find_all.json"),
+        headers: {})
+
+    WebMock.stub_request(
+      :get,
+      "https://honestrenter.com/api/titles?apiKey&id=#{TEST_TITLES_ID}")
+      .with(headers: headers)
+      .to_return(
+        status: 200,
+        body: File.read("#{ FIXTURES_DIR }/titles/find_all_by_filters.json"),
         headers: {})
   end
 

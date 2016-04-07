@@ -1,0 +1,11 @@
+{
+  "data": [
+    {
+      "id": 3,
+      "gender": 2,
+      "acronym": "Mrs."
+    }
+  ],
+  "limit": 100,
+  "offset": 0
+}

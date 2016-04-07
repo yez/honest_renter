@@ -33,7 +33,7 @@ module HonestRenter
         new(response.body["data"])
       end
 
-      def find_by_filters(filters)
+      def find_all_by_filters(filters, session)
         request = HonestRenter::FindByFilter.new(attr_name, session)
         filters.each { |filter| request.add_filter(filter) }
         response = request.call
