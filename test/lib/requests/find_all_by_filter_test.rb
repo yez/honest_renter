@@ -1,13 +1,13 @@
 require_relative '../../test_helper'
-require_relative '../../../lib/requests/find_by_filter'
+require_relative '../../../lib/requests/find_all_by_filter'
 
 module HonestRenter
-  class FindByFilterTest < Minitest::Unit::TestCase
+  class FindAllByFilterTest < Minitest::Unit::TestCase
     def setup
       @id = 1234
       @resource_name = 'some resource'
       @session = instance_double(Session)
-      @request = FindByFilter.new(@resource_name, @session)
+      @request = FindAllByFilter.new(@resource_name, @session)
     end
 
     def test_ivars

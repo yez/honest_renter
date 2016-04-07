@@ -1,5 +1,5 @@
 module HonestRenter
-  class FindByFilter
+  class FindAllByFilter
     def initialize(resource_name, session)
       @resource_name = resource_name
       @session = session

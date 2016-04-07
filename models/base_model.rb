@@ -34,7 +34,7 @@ module HonestRenter
       end
 
       def find_all_by_filters(filters, session)
-        request = HonestRenter::FindByFilter.new(attr_name, session)
+        request = HonestRenter::FindAllByFilter.new(attr_name, session)
         filters.each { |filter| request.add_filter(filter) }
         response = request.call
 
