@@ -83,12 +83,32 @@ Like the `.find` method, a `session` is the required parameter.
 HonestRenter::Country.find_all(session)
 ```
 
-Optionally, a `limit` and `offset` can be given to the `.find_all` method to create pagination.
+Optionally, a `limit` and `offset` can be given to the `.find_all` method to enable pagination.
 
 ```ruby
 limit = 10
 offset = 5
 HonestRenter::Country.find_all(session, limit, offset)
+```
+
+### `find_all`
+
+To find a list of a certain model that matches a set of passed in filters, the `.find_all_by_filters` class method exists. This method has 2 required parameters and 2 optional parameters.
+
+The first required parameter is an Array or other enumerable structure containing `Filters`. Like the `.find` method, a `session` is the other required parameter.
+
+```ruby
+filters = [HonestRenter::Filter.new(owner: 'Ted')]
+HonestRenter::Pet.find_all_by_filter(filters, session)
+```
+
+Optionally, a `limit` and `offset` can be given to the `.find_all_by_filters` method to enable pagination.
+
+```ruby
+limit = 10
+offset = 5
+filters = [HonestRenter::Filter.new(owner: 'Ted')]
+HonestRenter::Pet.find_all_by_filter(filters, session, limit, offset)
 ```
 
 ## More Information
