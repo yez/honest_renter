@@ -1,16 +1,11 @@
 module HonestRenter
   class FindById
+    include Expandable
+
     def initialize(id, resource_name, session)
       @id = id
       @resource_name = resource_name
       @session = session
-    end
-
-    def expanding(attribute)
-      @expansions ||= []
-      @expansions << attribute
-
-      self
     end
 
     def call

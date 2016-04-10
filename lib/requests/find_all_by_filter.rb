@@ -1,17 +1,12 @@
 module HonestRenter
   class FindAllByFilter
+    include Expandable
+
     def initialize(resource_name, session, limit = nil, offset = nil)
       @resource_name = resource_name
       @session = session
       @limit = limit
       @offset = offset
-    end
-
-    def expanding(attribute)
-      @expansions ||= []
-      @expansions << attribute
-
-      self
     end
 
     def add_filter(filter)
