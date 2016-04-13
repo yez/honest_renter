@@ -97,8 +97,10 @@ To find a list of a certain model that matches a set of passed in filters, the `
 
 The first required parameter is an Array or other enumerable structure containing `Filters`. Like the `.find` method, a `session` is the other required parameter.
 
+An `HonestRenter::Filter` is a simple class that accepts two parameters, a `key` and a `value`. The `key` is the field on which to filter.
+
 ```ruby
-filters = [HonestRenter::Filter.new(owner: 'Ted')]
+filters = [HonestRenter::Filter.new(:owner, 'Ted')]
 HonestRenter::Pet.find_all_by_filter(filters, session)
 ```
 
