@@ -15,6 +15,8 @@ module HonestRenter
 
     attr_accessor *ATTRIBUTES
 
+    include Unrequestable
+
     class << self
       def attr_name
         'inbox_filters'
