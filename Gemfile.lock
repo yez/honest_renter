@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    honest_renter (0.0.0)
+    honest_renter (1.0.0)
       faraday (~> 0.9)
 
 GEM
