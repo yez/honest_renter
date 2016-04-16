@@ -57,6 +57,10 @@ auth.session
 # => HonestRenter::Session
 ```
 
+### API Key
+
+All Honest Renter requests require an API key. To have this gem automatically use your API key, the environment variable `HONEST_RENTER_API_KEY` should be set.
+
 ## Request Methods
 
 The HonestRenter API supports querying for objects by their ID or by a set of filters. All querying operations require an authenticated `HonestRenter::Session`.

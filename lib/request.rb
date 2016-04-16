@@ -5,8 +5,6 @@ module HonestRenter
     attr_reader :client, :session
 
     BASE_URL = 'https://honestrenter.com/api/'.freeze
-    EXPIRES_LENGTH = 3600
-    RENEWABLE_MULTIPLIER = 3
 
     def initialize(client, session = nil)
       @client = client
