@@ -12,16 +12,18 @@ module HonestRenter
     def call
       client = HonestRenter::Client.new
       request = HonestRenter::Request.new(client, @session)
-      query = {}.tap do |params|
+
+      request.get(@resource_name, query)
+    end
+
+    def query
+      {}.tap do |params|
         unless @expansions.nil? || @expansions.empty?
           params[:expand] = JSON(@expansions)
         end
-
         params[:limit] = @limit unless @limit.nil?
         params[:offset] = @offset unless @offset.nil?
       end
-
-      request.get(@resource_name, query)
     end
   end
 end
