@@ -5,7 +5,6 @@ require_relative 'response'
 require_relative 'session'
 require_relative 'authenticator'
 require_relative '../models/base_model'
-require_relative 'requests/expandable'
 
 [
   '../../modules',
