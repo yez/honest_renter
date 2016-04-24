@@ -5,7 +5,9 @@ module HonestRenter
     end
 
     def connection
-      @connection ||= Faraday.new
+      @connection ||= Faraday.new do |conn|
+        conn.adapter = @faraday_adapter
+      end
     end
   end
 end
