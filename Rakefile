@@ -24,7 +24,7 @@ namespace :fixtures do
     session = HonestRenter::Authenticator.from_secret_key_member_id(ENV['HONEST_RENTER_SECRET_KEY'], ENV['MEMBER_ID']).session
 
     ethniticites_find_all_results = HonestRenter::Ethnicities.find_all(session)
-    members_find_results = HonestRenter::Member.find(ENV['MEMBER_ID', ]session)
+    members_find_results = HonestRenter::Member.find(ENV['MEMBER_ID'],session)
     filters = [HonestRenter::Filter.new(:id, 3)]
     titles_find_all_by_filters_results = HonestRenter::Title.find_all_by_filters(filters, session)
 
