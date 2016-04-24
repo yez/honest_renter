@@ -81,6 +81,8 @@ The model will automatically return an instance of the class upon with the `.fin
 
 To find a complete list of a certain model, the `.find_all` class method exists. This method has 1 required parameter and 2 optional parameters.
 
+*Note: Not all models are able to issue a `find_all` request. Unsupported models will throw an `Unrequestable::Unsupported` error.*
+
 Like the `.find` method, a `session` is the required parameter.
 
 ```ruby
