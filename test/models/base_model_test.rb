@@ -42,6 +42,16 @@ module HonestRenter
       TestModel.find_all(session)
     end
 
+    def test_find_all_by_filters
+      find_all_by_filter_request = instance_double(HonestRenter::FindAllByFilter)
+      response = instance_double(HonestRenter::Response, body: { 'data' => {} }, success?: true)
+      session = instance_double(HonestRenter::Session, honr_session: '', honr_authentication_token: '')
+      expect(HonestRenter::FindAllByFilter).to receive(:new).with(TestModel.attr_name, session) { find_all_by_filter_request }
+      expect(find_all_by_filter_request).to receive(:call) { response }
+
+      TestModel.find_all_by_filters([], session)
+    end
+
     def test_find
       id = 1234
       find_request = instance_double(HonestRenter::FindById)
